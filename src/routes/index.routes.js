@@ -32,11 +32,10 @@ readdirSync(PATH_ROUTER).filter((fileName) => {
    if(cleanName !== "index"){
     //TODO: si la ruta no es el archivo index genero la ruta para verla por consola
        console.log(`The route is loading /${cleanName}`);
-       
        //TODO: importamos el archivo creado el cual va a contener rutas especificas ejemplo : user va a tener todos los user
        import(`./${cleanName}.routes.js`).then((moduleRouter) => {
          //TODO: usamos la ruta creada y las funciones ade ntro del archivo si no hay funciones adentro genera un error
-         router.use(`/${cleanName}`, moduleRouter.router)
+         router.use(`/api/${cleanName}`, moduleRouter.router)
      }).catch(error => {
       console.error(`una de las rutas no tiene funcione definidas para ser usadas por el router`, error)
      })
