@@ -3,6 +3,7 @@ import express from 'express';
 import { router } from './routes/index.routes.js';
 import pool from './db/config.js';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
 //TODO: puerto tomado del .env
 const PORT = process.env.PORT || 3000;
@@ -13,6 +14,8 @@ app.use(morgan('dev'));
 //TODO: Middkeware para parsear json y encoder
 app.use(express.json());
 app.use(express.urlencoded({ extended : false}));
+//TODO: para poder ver las cabeceras y las cookie en ella
+app.use(cookieParser());
 //TODO: verificacion de conexion con la base de datos al leantar el servidor 
 pool.getConnection();
 //TODO: aca usamos el archivo de rutas dinamicas que creamos
