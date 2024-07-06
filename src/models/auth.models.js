@@ -7,11 +7,13 @@ const login = async (email) => {
    const sql = "SELECT * FROM users WHERE email = ?";
    const values = [email];
    const [response ]= await pool.query(sql, values);
-   return response[0];
+   return response;
 }
 
-const register = (newUser) => {
-  
+const register = async (name, email, password) => {
+    const $sql = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`;
+    const response = await pool.query($sql, [name, email, password])
+    return response[0]
 }
 
 
