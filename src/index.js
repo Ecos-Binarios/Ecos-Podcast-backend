@@ -16,7 +16,7 @@ app.use(cookieParser());
 
 //TODO: permisos de accesoa  nuestra api se encesita usar los cors
 app.use(cors({
-    origin: 'https://ecos-podcasts.netlify.app',
+    origin: ['https://ecos-podcasts.netlify.app','http://127.0.0.1:5501'],
     credentials: true
 }))
 

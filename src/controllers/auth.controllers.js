@@ -22,10 +22,11 @@ export const register = async (req, res) => {
     const newUser = req.body;
     try {
         const response = await registerService(newUser);
+        console.log(response)
         if(response === "EMAIL IS IN USE") return res.status(409).json({data: response});
         if(response === "UNREGISTER USER") return res.status(509).json({data: response});
         if(response === "ERROR PROFILE NOT CREATED") return res.status(509).json({data: response});
-        res.status(201).json({message: "ok", data: response});
+        res.status(200).json({message: "ok", data: response});
     } catch (error) {
         res.status(400).json({message: "error en el registro", error});
     }
