@@ -18,6 +18,7 @@ export const loginService = async (user) => {
      const jwtCreate = await generateToken(user);
      const data = {
          token: jwtCreate,
+         id: response[0].id,
          name: response[0].name,
          email: response[0].email,
          rol: response[0].rol_user,
@@ -30,27 +31,26 @@ export const loginService = async (user) => {
 };
 
 
-
 export const registerService = async (user) => {
   const {name, email, password} = user
  try {
   const checkUser = await UsersModel.checkEmail(email);
-  console.log(checkUser)
+  if(checkUser.length !== 0) return "EMAIL IS IN USE"
   const passwordHash = await encrypt(password);
   const response = await AuthModel.register(name, email, passwordHash);
-  /* console.log(response.insertId) */
-   const profile = {
+  if(response.affectedRows === 0) return  "UNREGISTER USER"
+  const profile = {
     name: name,
-    lastName: user.lastName,
+    lastName: user.lastname,
     birthdate: null,
     about: "",
     url: "",
     owner: response.insertId
-   }
-  const ver = await ProfileModel.insert(profile);
-  console.log(ver)
-  return response
+  };
+  const addProfile = await ProfileModel.insert(profile);
+  if(addProfile.affectedRows === 0) return "ERROR PROFILE NOT CREATED"
+  return response;
  } catch (error) {
-  
+  return console.error(error);
  }
-}
+};
