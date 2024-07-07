@@ -12,7 +12,7 @@ export const login = async (req, res) => {
             maxAge: 3600000, // Tiempo de expiración de la cookie en milisegundos (1 hora en este ejemplo)
             path: '/'        // Ruta en la que la cookie está disponible
         });
-        return res.status(200).json({message: "ok", data: response})
+        return res.status(200).json({message: "ok", data: response});
     } catch (error) {
         res.send("error en el login", error);
     }
