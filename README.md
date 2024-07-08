@@ -21,7 +21,7 @@ Bienvenido a la API de Ecos Podcast, una plataforma para gestionar y escuchar po
 ### Categorías
 
 - **Mostrar todas las categorías de los podcasts**
-  - **GET** `https://ecos-podcast.onrender.com/api/podcasts/categories`
+  - **GET** `https://ecos-podcast.onrender.com/api/categories`
   - Esta ruta devuelve una lista de todas las categorías disponibles en la plataforma.
 
 - **Mostrar categoría por ID**
@@ -40,4 +40,4 @@ Bienvenido a la API de Ecos Podcast, una plataforma para gestionar y escuchar po
 
 - **Mostrar episodio por ID**
   - **GET** `https://ecos-podcast.onrender.com/api/episodes/id`
-  - Reemplaza `id` con el ID del episodio que deseas consultar. Por ejemplo, para obtener el episodio con ID 15: `https://ecos-podcast.onrender.com/api/episodes/15`
+  - Reemplaza `id` con el ID del episodio que deseas consultar. Por ejemplo, para obtener el episodio con ID 30: `https://ecos-podcast.onrender.com/api/episodes/30`
