@@ -1,7 +1,3 @@
-Claro, aquí tienes el README para tu proyecto de API con Node.js para una plataforma de podcasts:
-
----
-
 # Ecos Podcast API
 
 Bienvenido a la API de Ecos Podcast, una plataforma para gestionar y escuchar podcasts. Esta API permite acceder a información sobre podcasts, episodios y categorías. A continuación se detallan las rutas disponibles para interactuar con la API.
