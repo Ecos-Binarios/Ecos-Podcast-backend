@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import fileUpload from "express-fileupload";
-import { createCategory, createPodcastCategory, getAllCategories, getCategoriesByPodcastId } from "../controllers/categories.controller.js";
+import { createCategory, createPodcastCategory, getAllCategories, getCategoriesById, getCategoriesByPodcastId } from "../controllers/categories.controller.js";
 
 const router = Router();
 
@@ -11,6 +11,7 @@ router.use(fileUpload({
 }));
 
 router.get('/', getAllCategories);
+router.get('/:id', getCategoriesById);
 router.get('/:podcastId', getCategoriesByPodcastId);
 router.post('/', createCategory);
 router.post('/:podcastId', createPodcastCategory);

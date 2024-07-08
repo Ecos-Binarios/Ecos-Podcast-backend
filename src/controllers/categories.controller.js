@@ -1,9 +1,20 @@
-import { createCategoryModel, createPodcastCategoryModel, getAllCategoriesModel, getCategoriesByPodcastIdModel } from "../models/categories.models.js";
+import { createCategoryModel, createPodcastCategoryModel, getAllCategoriesModel, getCategoriesByIdModel, getCategoriesByPodcastIdModel } from "../models/categories.models.js";
 
 export const getAllCategories = async (req, res) => {
     try {
         const result = await getAllCategoriesModel();
         if (result.length === 0) return res.status(404).json({ message: "No hay categorías" });
+        return res.status(200).json(result);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+}
+
+export const getCategoriesById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await getCategoriesByIdModel(id);
+        if (result.length === 0) return res.status(404).json({ message: "Categoría no encontrada" });
         return res.status(200).json(result);
     } catch (error) {
         return res.status(500).json({ message: error.message });

@@ -7,6 +7,12 @@ export const getAllCategoriesModel = async () => {
     return rows; 
 }
 
+export const getCategoriesByIdModel = async (id) => {
+    const $sql = `SELECT * FROM categories WHERE id = ?`;
+    const [rows, fields] = await pool.query($sql, [id]);
+    return rows;
+}
+
 export const getCategoriesByPodcastIdModel = async (podcastId) => {
     const $sql = `SELECT categories.name, categories.id as category_id FROM categories
        JOIN podcast_categories ON podcast_categories.category_id = categories.id
